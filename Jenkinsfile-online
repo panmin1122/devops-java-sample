@@ -19,6 +19,7 @@ pipeline {
         GITHUB_ACCOUNT = 'panmin1122'
         APP_NAME = 'devops-java-sample'
         SONAR_CREDENTIAL_ID = 'sonar-token'
+        GIT_USERNAME = 'panmin1122'
     }
 
     stages {
@@ -80,8 +81,8 @@ pipeline {
               container ('maven') {
                 input(id: 'release-image-with-tag', message: 'release image with tag?')
                   withCredentials([usernamePassword(credentialsId: "$GITHUB_CREDENTIAL_TOKEN", passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
-                    sh 'git config --global user.email "kubesphere@yunify.com" '
-                    sh 'git config --global user.name "kubesphere" '
+                    sh 'git config --global user.email "505723160@qq.com" '
+                    sh 'git config --global user.name "panmin1122" '
                     sh 'git tag -a $TAG_NAME -m "$TAG_NAME" '
                     sh 'git push http://$GIT_USERNAME:$GIT_PASSWORD@github.com/$GITHUB_ACCOUNT/devops-java-sample.git --tags --ipv4'
                   }
