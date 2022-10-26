@@ -94,9 +94,9 @@ pipeline {
           steps {
               container ('maven') {
                 input(id: 'release-image-with-tag', message: 'release image with tag?')
-                  withCredentials([usernamePassword(credentialsId: "$GITHUB_CREDENTIAL_ID", passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
-                    sh 'git config --global user.email "505723160@qq.com" '
-                    sh 'git config --global user.name "panmin1122" '
+                  withCredentials([usernamePassword(credentialsId: "$GITHUB_CREDENTIAL_TOKEN", passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+                    sh 'git config --global user.email "kubesphere@yunify.com" '
+                    sh 'git config --global user.name "kubesphere" '
                     sh 'git tag -a $TAG_NAME -m "$TAG_NAME" '
                     sh 'git push http://$GIT_USERNAME@github.com/$GITHUB_ACCOUNT/devops-java-sample.git --tags --ipv4'
                   }
